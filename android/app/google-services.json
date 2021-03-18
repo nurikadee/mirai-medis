@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "345834209279",
+    "project_id": "mirai-medis",
+    "storage_bucket": "mirai-medis.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:345834209279:android:6cf15cbf92fd7d27ce71ca",
+        "android_client_info": {
+          "package_name": "com.rsudaa.pelayanananonline"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "345834209279-c33repfopnn1n85467k677gbc04qcj06.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA19uQsQiAPCRfcfqtjEJvtu8-r7bNwQNE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "345834209279-c33repfopnn1n85467k677gbc04qcj06.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
