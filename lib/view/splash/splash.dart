@@ -1,8 +1,10 @@
 import 'dart:async';
 import 'dart:io';
-import 'package:apimodule/model/response/global_response.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:medis/model/response/base_response.dart';
+import 'package:medis/view/home/bottombar.dart';
 import 'package:mvvm_builder/mvvm_builder.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:medis/cache/pref.dart';
@@ -10,6 +12,8 @@ import 'package:medis/utilities/version_checking.dart';
 import 'package:medis/view/splash/pattern/splash_presenter.dart';
 import 'package:medis/view/splash/pattern/splash_view_interface.dart';
 import 'package:medis/view/splash/pattern/splash_view_model.dart';
+
+String versionName = '2.0.0';
 
 class Splash extends StatefulWidget {
   @override
@@ -25,7 +29,6 @@ class _SplashState extends State<Splash> implements SplashViewInterface {
   String storeVersion = '';
   String storeUrl = '';
   String packageName = '';
-  String versionName = '2.0.0';
 
   @override
   void initState() {
@@ -80,72 +83,76 @@ class _SplashState extends State<Splash> implements SplashViewInterface {
     return MVVMPage<SplashPresenter, SplashViewModel>(
       builder: (context, presenter, model) {
         return Scaffold(
-          body: Container(
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                  colorFilter: ColorFilter.mode(
-                      Colors.green.withOpacity(0.5), BlendMode.softLight),
-                  image: AssetImage('assets/images/bgsplash.png'),
-                  fit: BoxFit.cover),
-            ),
-            child: Center(
-              child: IntrinsicHeight(
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      'MIRAI MEDIS',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: 30,
-                          fontFamily: 'QuickSand',
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                    ),
-                    Text(
-                      'Mobile Information System \nof RSUD Arifin Achmad Pekanbaru',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: 12,
-                          fontFamily: 'QuickSand',
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                    ),
-                    SizedBox(height: 50),
-                    Expanded(
-                      child: Container(
-                          child: Image.asset(
-                        'assets/images/logorsudaa.png',
-                        width: 150,
-                        height: 150,
-                      )),
-                    ),
-                    SizedBox(height: 50),
-                    LinearPercentIndicator(
-                      alignment: MainAxisAlignment.center,
-                      width: MediaQuery.of(this.context).size.width / 3,
-                      lineHeight: 2.0,
-                      animation: true,
-                      percent: 1.0,
-                      animationDuration: 2250,
-                      backgroundColor: Colors.grey,
-                      progressColor: Colors.white,
-                    ),
-                    SizedBox(height: 100),
-                    Text(
-                      'version. $versionName',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 14,
-                        fontFamily: 'QuickSand',
-                        fontWeight: FontWeight.bold,
+          body: Stack(
+            fit: StackFit.expand,
+            children: [
+              Image.asset('assets/images/bgsplash.png', fit: BoxFit.cover),
+              ClipRRect(
+                  child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                child: Container(
+                    color: Colors.grey.withOpacity(0.3),
+                    alignment: Alignment.center),
+              )),
+              Center(
+                child: IntrinsicHeight(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        'MIRAI MEDIS',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 30,
+                            fontFamily: 'QuickSand',
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
                       ),
-                    ),
-                  ],
+                      Text(
+                        'Mobile Information System \nof RSUD Arifin Achmad Pekanbaru',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 12,
+                            fontFamily: 'QuickSand',
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                      ),
+                      SizedBox(height: 50),
+                      Expanded(
+                        child: Container(
+                            child: Image.asset(
+                          'assets/images/logorsudaa.png',
+                          width: 150,
+                          height: 150,
+                        )),
+                      ),
+                      SizedBox(height: 50),
+                      LinearPercentIndicator(
+                        alignment: MainAxisAlignment.center,
+                        width: MediaQuery.of(this.context).size.width / 3,
+                        lineHeight: 2.0,
+                        animation: true,
+                        percent: 1.0,
+                        animationDuration: 2250,
+                        backgroundColor: Colors.grey,
+                        progressColor: Colors.white,
+                      ),
+                      SizedBox(height: 100),
+                      Text(
+                        'version. $versionName',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 14,
+                          fontFamily: 'QuickSand',
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
+            ],
           ),
         );
       },
@@ -154,15 +161,16 @@ class _SplashState extends State<Splash> implements SplashViewInterface {
   }
 
   @override
-  void goToHome(GlobalResponse globalResponse) {
-    // Timer(Duration(milliseconds: 4500), () {
-    //   if (!versionCheck.hasUpdate) {
-    //     Navigator.pushReplacement(
-    //         context,
-    //         MaterialPageRoute(
-    //           builder: (ctx) => BottomBar(),
-    //         ));
-    //   }
-    // });
+  void goToHome(BaseResponse baseResponse) {
+    print(baseResponse.message);
+    Timer(Duration(milliseconds: 1500), () {
+      if (!versionCheck.hasUpdate) {
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (ctx) => BottomBar(),
+            ));
+      }
+    });
   }
 }

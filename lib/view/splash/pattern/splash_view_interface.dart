@@ -1,5 +1,5 @@
-import 'package:apimodule/model/response/global_response.dart';
+import 'package:medis/model/response/base_response.dart';
 
 abstract class SplashViewInterface {
-  void goToHome(GlobalResponse globalResponse);
+  void goToHome(BaseResponse baseResponse);
 }

@@ -11,7 +11,7 @@ class DashboardMenu {
 var pendaftaran = DashboardMenu(
   directTo: null,
   title: "Pendaftaran",
-  icon: "assets/images/ic_barcode.png",
+  icon: "assets/images/ic_registration.png",
 );
 var dokter = DashboardMenu(
   directTo: null,
@@ -43,13 +43,18 @@ final List<String> imgList = [
   "assets/images/10.png",
 ];
 
-final List<Widget> imageSliders = imgList
-    .map(
-      (item) => Container(
-        child: ClipRRect(
-          borderRadius: BorderRadius.all(Radius.circular(8.0)),
-          child: Image.asset(item, fit: BoxFit.cover),
+List<Widget> imageSliders(BuildContext context) {
+  return imgList
+      .map(
+        (item) => Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.width / 5,
+          margin: EdgeInsets.all(2),
+          child: ClipRRect(
+            borderRadius: BorderRadius.all(Radius.circular(8.0)),
+            child: Image.asset(item, fit: BoxFit.cover),
+          ),
         ),
-      ),
-    )
-    .toList();
+      )
+      .toList();
+}

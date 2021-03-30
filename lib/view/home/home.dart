@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:medis/utilities/dashboard_menu.dart';
+import 'package:medis/widgets/widget_header_inner.dart';
 import 'package:toast/toast.dart';
 
 class Home extends StatefulWidget {
@@ -17,57 +18,46 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        child: ListView(
-          children: [
-            SizedBox(height: 10),
-            CarouselSlider(
-              options: CarouselOptions(
-                  aspectRatio: 16 / 9,
-                  enlargeCenterPage: true,
-                  enlargeStrategy: CenterPageEnlargeStrategy.height,
-                  scrollDirection: Axis.horizontal,
-                  autoPlay: true,
-                  autoPlayInterval: Duration(seconds: 10)),
-              items: imageSliders,
+        child: Stack(
+          children: <Widget>[
+            HeaderInner(),
+            ListView(
+              children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.width / 1.6,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      left: 20, right: 20, top: 20, bottom: 10),
+                  child: Text("Pilihan menu",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      )),
+                ),
+                getGridView(),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      left: 20, right: 20, top: 10, bottom: 10),
+                  child: Text("Gallery",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      )),
+                ),
+                CarouselSlider(
+                  options: CarouselOptions(
+                      aspectRatio: MediaQuery.of(context).size.width /
+                          (MediaQuery.of(context).size.width / 3),
+                      enlargeCenterPage: true,
+                      enlargeStrategy: CenterPageEnlargeStrategy.height,
+                      scrollDirection: Axis.horizontal,
+                      autoPlay: true,
+                      autoPlayInterval: Duration(seconds: 10)),
+                  items: imageSliders(context),
+                ),
+              ],
             ),
-            SizedBox(height: 10),
-            Card(
-              color: Colors.lightGreen[500],
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              margin: EdgeInsets.only(left: 10, right: 10),
-              child: Container(
-                child: ListTile(
-                    leading: Container(
-                      child: Icon(
-                        Icons.account_circle,
-                        size: 40,
-                        color: Colors.white,
-                      ),
-                    ),
-                    trailing: Icon(
-                      Icons.home_outlined,
-                      size: 30,
-                      color: Colors.white,
-                    ),
-                    title: Text("Nurika Dewi",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ))),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  left: 20.0, right: 20.0, top: 10.0, bottom: 10.0),
-              child: Text("Pilihan menu",
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  )),
-            ),
-            getGridView()
           ],
         ),
       ),
@@ -104,18 +94,12 @@ class _HomeState extends State<Home> {
             width: MediaQuery.of(context).size.width / 2,
             padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
             child: ListTile(
-                leading: ClipRRect(
-                    borderRadius: BorderRadius.all(Radius.circular(80.0)),
-                    child: Container(
-                      padding: EdgeInsets.all(8),
-                      color: Colors.lime[200],
-                      child: Image.asset(
-                        menus[index].icon,
-                        fit: BoxFit.contain,
-                        width: 40,
-                        height: 40,
-                      ),
-                    )),
+                leading: Image.asset(
+                  menus[index].icon,
+                  fit: BoxFit.contain,
+                  width: 50,
+                  height: 50,
+                ),
                 title: Text(title,
                     style: TextStyle(
                         fontSize: 12,

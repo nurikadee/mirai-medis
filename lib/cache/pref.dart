@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:apimodule/model/response/login_response.dart';
+import 'package:medis/model/response/login_response.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'key.dart';
@@ -11,10 +11,10 @@ class Pref {
     return (prefs.getBool(SharedPrefKey.isLoggedInKey) ?? false);
   }
 
-  static Future<LoginResults> getUserLogin() async {
+  static Future<DataUser> getUserLogin() async {
     final prefs = await SharedPreferences.getInstance();
     var pref = json.decode(prefs.getString(SharedPrefKey.userLogin));
-    return LoginResults.fromJson(await pref);
+    return DataUser.fromJson(await pref);
   }
 
   static setUserLogin(value) async {

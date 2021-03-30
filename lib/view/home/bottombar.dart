@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:medis/view/akun/akun.dart';
+import 'package:medis/view/akun/profile.dart';
 import 'package:medis/view/home/home.dart';
 import 'package:medis/view/jadwalsaya/jadwalsaya.dart';
 import 'package:medis/view/pesan/pesan.dart';
@@ -20,20 +20,20 @@ class _BottomBarState extends State<BottomBar> {
     Pesan(
       key: PageStorageKey('Pesan'),
     ),
-    Akun(
-      key: PageStorageKey('Akun'),
+    Profile(
+      key: PageStorageKey('Profil'),
     ),
   ];
   final PageStorageBucket bucket = PageStorageBucket();
 
   int _selectedIndex = 0;
   Widget _bottomNavigationBar(int selectedIndex) => BottomNavigationBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         elevation: 0,
         onTap: (int index) => setState(() => _selectedIndex = index),
         currentIndex: selectedIndex,
-        selectedItemColor: Colors.lime[100],
-        unselectedItemColor: Colors.white,
+        selectedItemColor: Colors.green,
+        unselectedItemColor: Colors.grey[400],
         type: BottomNavigationBarType.fixed,
         selectedLabelStyle:
             TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
@@ -53,13 +53,7 @@ class _BottomBarState extends State<BottomBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      bottomNavigationBar: Card(
-          color: Colors.lightGreen[500],
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10),
-          ),
-          margin: EdgeInsets.only(left: 10, right: 10, bottom: 10),
-          child: Container(child: _bottomNavigationBar(_selectedIndex))),
+      bottomNavigationBar: _bottomNavigationBar(_selectedIndex),
       body: PageStorage(
         child: pages[_selectedIndex],
         bucket: bucket,
