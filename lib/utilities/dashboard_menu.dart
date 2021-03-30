@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:medis/view/dokter/dokter.dart';
 
 class DashboardMenu {
   StatefulWidget directTo;
@@ -14,7 +15,7 @@ var pendaftaran = DashboardMenu(
   icon: "assets/images/ic_registration.png",
 );
 var dokter = DashboardMenu(
-  directTo: null,
+  directTo: DokterScreen(),
   title: "Dokter",
   icon: "assets/images/ic_doctor.png",
 );

@@ -1,7 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:medis/cache/pref.dart';
+import 'package:medis/model/response/login_response.dart';
 
-class HeaderInner extends StatelessWidget {
+class HeaderInner extends StatefulWidget {
+  @override
+  _HeaderInnerState createState() => _HeaderInnerState();
+}
+
+class _HeaderInnerState extends State<HeaderInner> {
+  var isLoggedIn = false;
+
+  DataUser dataUser;
+
+  String nama = "Loading ...";
+
+  @override
+  void initState() {
+    super.initState();
+    checkIsLoggedIn();
+  }
+
+  void checkIsLoggedIn() {
+    Pref.checkIsLoggedIn().then((seen) {
+      setState(() {
+        isLoggedIn = seen;
+      });
+
+      if (seen) {
+        Pref.getUserLogin().then((value) {
+          dataUser = value;
+          nama = dataUser.pasien.nama;
+        });
+      } else {
+        nama = "(Tamu) Pasien";
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,7 +61,7 @@ class HeaderInner extends StatelessWidget {
                     size: 30,
                     color: Colors.white,
                   ),
-                  title: Text("(Tamu) Pasien",
+                  title: Text(nama,
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,

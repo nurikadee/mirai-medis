@@ -178,7 +178,7 @@ class _ProfileState extends State<Profile> with LifecycleAware, LifecycleMixin {
                             fontWeight: FontWeight.bold,
                           )),
                       subtitle:
-                          Text("No. Rekam Medis : ${dataUser.pasien.kode}}",
+                          Text("No. Rekam Medis : ${dataUser.pasien.kode}",
                               style: TextStyle(
                                 color: Colors.grey[500],
                                 fontSize: 14,
@@ -198,7 +198,10 @@ class _ProfileState extends State<Profile> with LifecycleAware, LifecycleMixin {
                             ),
                             Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: Text(dataUser.pasien.goldar.toUpperCase(),
+                              child: Text(
+                                  dataUser.pasien.goldar == null
+                                      ? "-"
+                                      : dataUser.pasien.goldar.toUpperCase(),
                                   style: TextStyle(
                                     color: Colors.grey[500],
                                     fontSize: 12,

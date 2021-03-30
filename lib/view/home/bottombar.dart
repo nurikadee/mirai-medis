@@ -43,7 +43,7 @@ class _BottomBarState extends State<BottomBar> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.file_copy), label: "Histori"),
+              icon: Icon(Icons.file_copy), label: "Jadwal Saya"),
           BottomNavigationBarItem(icon: Icon(Icons.email), label: "Pesan"),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profil"),
         ],
