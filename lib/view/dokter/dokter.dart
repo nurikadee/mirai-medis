@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:lifecycle/lifecycle.dart';
+import 'package:medis/model/response/dokter_by_poli_response.dart';
 import 'package:medis/model/response/dokter_response.dart';
+import 'package:medis/model/response/jadwal_dokter_response.dart';
 import 'package:medis/view/dokter/pattern/dokter_presenter.dart';
 import 'package:medis/view/dokter/pattern/dokter_view_interface.dart';
 import 'package:medis/view/dokter/pattern/dokter_view_model.dart';
+import 'package:medis/view/dokter/search_page.dart';
 import 'package:medis/widgets/item_dokter.dart';
 import 'package:mvvm_builder/mvvm_builder.dart';
 import 'package:toast/toast.dart';
@@ -15,9 +18,10 @@ class DokterScreen extends StatefulWidget {
 
 class _DokterState extends State<DokterScreen>
     with DokterViewInterface, LifecycleAware, LifecycleMixin {
-  var listData = Container();
+  var listData = ListView();
 
   DokterResponse dokterResponse;
+  List<Dokter> listDokter;
 
   @override
   void onLifecycleEvent(LifecycleEvent event) {
@@ -34,20 +38,42 @@ class _DokterState extends State<DokterScreen>
   @override
   Widget build(BuildContext context) {
     if (dokterResponse != null) {
-      listData = Container(
-          padding: EdgeInsets.all(10),
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          child: Column(children: <Widget>[
-            Expanded(child: ItemDokterList(response: dokterResponse))
-          ]));
+      listData = ListView.builder(
+          itemCount: listDokter.length,
+          itemBuilder: (BuildContext ctxt, int index) {
+            return ItemDokter(dokter: listDokter[index]);
+          });
     }
 
     return MVVMPage<DokterPresenter, DokterViewModel>(
       builder: (context, presenter, model) {
-        return Scaffold(appBar: AppBar(title: Text("Dokter")), body: listData);
+        return Scaffold(
+          appBar: AppBar(title: Text("Dokter")),
+          body: listData,
+          floatingActionButton: FloatingActionButton(
+            child: Icon(Icons.search),
+            tooltip: 'Cari dokter',
+            onPressed: () => showSearch(
+              context: this.context,
+              delegate: SearchPage<Dokter>(
+                searchStyle: TextStyle(color: Colors.white),
+                items: dokterResponse.data,
+                searchLabel: 'Cari dokter',
+                suggestion: Center(
+                  child: Text('Cari dokter berdasarkan nama'),
+                ),
+                failure: Center(
+                  child: Text('Data dokter tidak ditemukan'),
+                ),
+                filter: (dokter) => [dokter.namaLengkap],
+                builder: (dokter) => ItemDokter(dokter: dokter),
+              ),
+            ),
+          ),
+        );
       },
-      presenter: DokterPresenter(DokterViewModel(), this),
+      presenter:
+          DokterPresenter(DokterViewModel(), this, DokterPage.DOKTER, null),
     );
   }
 
@@ -73,6 +99,13 @@ class _DokterState extends State<DokterScreen>
   void showListDokter(DokterResponse dokterResponse) {
     setState(() {
       this.dokterResponse = dokterResponse;
+      this.listDokter = dokterResponse.data;
     });
   }
+
+  @override
+  void showListDokterByPoli(DokterByPoliResponse dokterByPoliResponse) {}
+
+  @override
+  void showListJadwalDokter(JadwalDokterResponse jadwalDokterResponse) {}
 }

@@ -21,42 +21,66 @@ class _HomeState extends State<Home> {
         child: Stack(
           children: <Widget>[
             HeaderInner(),
-            ListView(
-              children: [
-                SizedBox(
-                  height: MediaQuery.of(context).size.width / 1.6,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                      left: 20, right: 20, top: 20, bottom: 10),
-                  child: Text("Pilihan menu",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      )),
-                ),
-                getGridView(),
-                Padding(
-                  padding: const EdgeInsets.only(
-                      left: 20, right: 20, top: 10, bottom: 10),
-                  child: Text("Gallery",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      )),
-                ),
-                CarouselSlider(
-                  options: CarouselOptions(
-                      aspectRatio: MediaQuery.of(context).size.width /
-                          (MediaQuery.of(context).size.width / 3),
-                      enlargeCenterPage: true,
-                      enlargeStrategy: CenterPageEnlargeStrategy.height,
-                      scrollDirection: Axis.horizontal,
-                      autoPlay: true,
-                      autoPlayInterval: Duration(seconds: 10)),
-                  items: imageSliders(context),
-                ),
-              ],
+            Container(
+              child: ListView(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius:
+                          BorderRadius.vertical(bottom: Radius.circular(50.0)),
+                      color: Colors.transparent,
+                    ),
+                    child: SizedBox(
+                      height: MediaQuery.of(context).size.width / 1.6,
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(30.0),
+                        topLeft: Radius.circular(30.0),
+                      ),
+                      color: Colors.grey[100],
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              left: 20, right: 20, top: 20, bottom: 10),
+                          child: Text("Pilihan menu",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                              )),
+                        ),
+                        getGridView(),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              left: 20, right: 20, top: 10, bottom: 10),
+                          child: Text("Gallery",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                              )),
+                        ),
+                        CarouselSlider(
+                          options: CarouselOptions(
+                              aspectRatio: MediaQuery.of(context).size.width /
+                                  (MediaQuery.of(context).size.width / 3),
+                              enlargeCenterPage: true,
+                              enlargeStrategy: CenterPageEnlargeStrategy.height,
+                              scrollDirection: Axis.horizontal,
+                              autoPlay: true,
+                              autoPlayInterval: Duration(seconds: 10)),
+                          items: imageSliders(context),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
@@ -66,6 +90,7 @@ class _HomeState extends State<Home> {
 
   Widget getGridView() {
     return Container(
+      color: Colors.grey[100],
       alignment: Alignment.topCenter,
       child: GridView.builder(
           padding: EdgeInsets.zero,

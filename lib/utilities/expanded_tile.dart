@@ -164,7 +164,7 @@ class _ExpandedTileState extends State<ExpandedTile>
                 child: !_isExpanded
                     ? null
                     : Container(
-                        padding: widget.contentPadding,
+                        //padding: widget.contentPadding,
                         color: widget.contentBackgroundColor,
                         width: double.infinity,
                         child: widget.content),
