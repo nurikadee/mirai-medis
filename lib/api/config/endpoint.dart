@@ -9,4 +9,11 @@ class EndpointMedis {
       Uri.parse(APiSettings.baseUrlMedis + "dokter/get-dokter-by-poli");
   static var jadwalDokter =
       Uri.parse(APiSettings.baseUrlMedis + "dokter/get-jadwal-dokter");
+  static var init = Uri.parse(APiSettings.baseUrlMedis + "pendaftaran/init");
+  static var debitur =
+      Uri.parse(APiSettings.baseUrlMedis + "debitur/get-debitur");
+  static var rujukan =
+      Uri.parse(APiSettings.baseUrlMedis + "bpjs/rujukan/get-rujukan-by-kartu");
+  static var bpjstopoli =
+      Uri.parse(APiSettings.baseUrlMedis + "poli/get-poli-rs-by-poli-bpjs");
 }

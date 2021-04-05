@@ -14,8 +14,8 @@ import 'package:medis/model/response/jadwal_dokter_response.dart';
 class DokterService {
   static Future<dynamic> getListDokter() async {
     try {
-      final response =
-          await http.get(EndpointMedis.dokter, headers: APiSettings.header);
+      final response = await http.get(EndpointMedis.dokter,
+          headers: APiSettings.getHeader(null));
 
       developer.log("${jsonDecode(response.body)}",
           name: "Response ${EndpointMedis.dokter}");
@@ -34,7 +34,7 @@ class DokterService {
   static Future<dynamic> getListDokterByPoli() async {
     try {
       final response = await http.get(EndpointMedis.dokterByPoli,
-          headers: APiSettings.header);
+          headers: APiSettings.getHeader(null));
 
       developer.log("${jsonDecode(response.body)}",
           name: "Response ${EndpointMedis.dokterByPoli}");
@@ -54,7 +54,7 @@ class DokterService {
       JadwalDokterRequest request) async {
     try {
       final response = await http.post(EndpointMedis.jadwalDokter,
-          headers: APiSettings.header, body: request.toJson());
+          headers: APiSettings.getHeader(null), body: request.toJson());
 
       developer.log("${request.toJson()}",
           name: "Request ${EndpointMedis.jadwalDokter}");

@@ -15,7 +15,7 @@ class AuthService {
     try {
       final response = await http.post(
         EndpointMedis.saveToken,
-        headers: APiSettings.header,
+        headers: APiSettings.getHeader(null),
         body: request.toJson(),
       );
 
@@ -44,7 +44,7 @@ class AuthService {
     try {
       final response = await http.post(
         EndpointMedis.login,
-        headers: APiSettings.header,
+        headers: APiSettings.getHeader(null),
         body: request.toJson(),
       );
 

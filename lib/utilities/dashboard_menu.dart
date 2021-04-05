@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:medis/view/dokter/dokter.dart';
 import 'package:medis/view/dokter/jadwal_praktik.dart';
+import 'package:medis/view/infokamar/info_kamar.dart';
+import 'package:medis/view/pendaftaran/pendaftaran.dart';
 
 class DashboardMenu {
   StatefulWidget directTo;
@@ -11,7 +13,7 @@ class DashboardMenu {
 }
 
 var pendaftaran = DashboardMenu(
-  directTo: null,
+  directTo: Pendaftaran(),
   title: "Pendaftaran",
   icon: "assets/images/ic_registration.png",
 );
@@ -23,7 +25,7 @@ var dokter = DashboardMenu(
 );
 
 var infokamar = DashboardMenu(
-  directTo: null,
+  directTo: InfoKamar(),
   title: "Info Kamar",
   icon: "assets/images/ic_bed.png",
 );

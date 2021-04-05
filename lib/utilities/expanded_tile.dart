@@ -31,6 +31,8 @@ class ExpandedTile extends StatefulWidget {
   final Curve expansionAnimationCurve;
   final Duration expansionDuration;
 
+  final Function() onTapParent;
+
   const ExpandedTile({
     key,
     // Requirds
@@ -61,6 +63,7 @@ class ExpandedTile extends StatefulWidget {
     // Misc
     this.expansionDuration = const Duration(milliseconds: 200),
     this.expansionAnimationCurve = Curves.ease,
+    this.onTapParent,
   })  : assert(expandIcon == null || checkable == false),
         assert((checkable == true || onChecked == null)),
         super(key: key);
@@ -107,6 +110,7 @@ class _ExpandedTileState extends State<ExpandedTile>
               splashColor: widget.headerSplashColor,
               onTap: () {
                 tileController.toggle();
+                if (widget.onTapParent != null) return widget.onTapParent();
               },
               child: Container(
                 padding: widget.headerPadding,

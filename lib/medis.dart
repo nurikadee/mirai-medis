@@ -6,20 +6,12 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:lifecycle/lifecycle.dart';
-import 'package:medis/utilities/bpjsapi.dart';
 import 'package:medis/utilities/device_info.dart';
 import 'package:medis/utilities/utils.dart';
 import 'package:medis/view/splash/splash.dart';
 
 import 'cache/pref.dart';
-
-final Geolocator geolocator = Geolocator()..forceAndroidLocationManager;
-StreamSubscription<Position> positionStreamSubscription;
-Position currentPosition;
-LatLng center;
 
 class Medis extends StatefulWidget {
   @override
@@ -34,10 +26,6 @@ class _MedisState extends State<Medis> {
     super.initState();
     setUpFirebase();
     initPlatformState();
-    requestLocationPermission();
-
-    var bpjs = BpjsApi();
-    bpjs.generate();
   }
 
   setUpFirebase() {
@@ -82,18 +70,6 @@ class _MedisState extends State<Medis> {
 
     print("Device ID : $id");
     Pref.setDeviceId(id);
-  }
-
-  void requestLocationPermission() async {
-    Position currentPosition = await geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high);
-
-    if (!mounted) return;
-
-    setState(() {
-      currentPosition = currentPosition;
-      center = LatLng(currentPosition.latitude, currentPosition.longitude);
-    });
   }
 
   @override

@@ -215,7 +215,7 @@ class _ProfileState extends State<Profile> with LifecycleAware, LifecycleMixin {
                         child: Column(
                           children: [
                             Icon(
-                              Icons.elderly_outlined,
+                              Icons.cake,
                               size: 20,
                               color: Colors.grey[500],
                             ),

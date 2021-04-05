@@ -1,6 +1,5 @@
 import UIKit
 import Flutter
-import GoogleMaps
 import Firebase
 
 @UIApplicationMain
@@ -29,8 +28,6 @@ import Firebase
     application.registerForRemoteNotifications()
     
     GeneratedPluginRegistrant.register(with: self)
-    
-    GMSServices.provideAPIKey("AIzaSyABVTESBNj4ORrU-DLb8CGWcaCdII-QXBY")
 
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }

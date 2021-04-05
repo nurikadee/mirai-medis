@@ -231,8 +231,8 @@ class User {
   String passwordHash;
   int status;
   String authKey;
-  dynamic passwordResetToken;
-  dynamic accountActivationToken;
+  String passwordResetToken;
+  String accountActivationToken;
   String createdAt;
   String updatedAt;
 

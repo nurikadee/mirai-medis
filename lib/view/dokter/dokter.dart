@@ -50,13 +50,19 @@ class _DokterState extends State<DokterScreen>
         return Scaffold(
           appBar: AppBar(title: Text("Dokter")),
           body: listData,
-          floatingActionButton: FloatingActionButton(
-            child: Icon(Icons.search),
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerFloat,
+          floatingActionButton: FloatingActionButton.extended(
+            heroTag: "Cari",
+            label: Text('Cari Dokter',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold, color: Colors.grey[700])),
+            icon: Icon(Icons.search, color: Colors.grey[700]),
+            backgroundColor: Colors.white,
             tooltip: 'Cari dokter',
             onPressed: () => showSearch(
               context: this.context,
               delegate: SearchPage<Dokter>(
-                searchStyle: TextStyle(color: Colors.white),
                 items: dokterResponse.data,
                 searchLabel: 'Cari dokter',
                 suggestion: Center(
