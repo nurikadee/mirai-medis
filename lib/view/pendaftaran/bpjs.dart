@@ -6,7 +6,7 @@ import 'package:medis/model/response/bpjs_rujukan_response.dart';
 import 'package:medis/model/response/init_response.dart';
 import 'package:medis/model/response/debitur_response.dart';
 import 'package:medis/model/response/polibpjs_to_poli_response.dart';
-import 'package:medis/view/pendaftaran/daftar_poli.dart';
+import 'package:medis/view/pendaftaran/pilihpoli.dart';
 import 'package:medis/view/pendaftaran/pattern/pendaftaran_presenter.dart';
 import 'package:medis/view/pendaftaran/pattern/pendaftaran_view_interface.dart';
 import 'package:medis/view/pendaftaran/pattern/pendaftaran_view_model.dart';
@@ -54,10 +54,12 @@ class _BpjsScreenState extends State<BpjsScreen>
                 body: Container(
                   padding: EdgeInsets.all(10),
                   width: MediaQuery.of(this.context).size.width,
-                  child: ListView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      Card(
-                        elevation: 1,
+                      Container(
                         child: IntrinsicHeight(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
@@ -79,7 +81,7 @@ class _BpjsScreenState extends State<BpjsScreen>
                               ),
                               Container(
                                 width: MediaQuery.of(this.context).size.width *
-                                    0.8,
+                                    0.9,
                                 height: 50,
                                 child: ElevatedButton(
                                     onPressed: () {
@@ -103,7 +105,6 @@ class _BpjsScreenState extends State<BpjsScreen>
                                                     color: Colors.green)))),
                                     child: Text("Tampilkan Nomor Rujukan")),
                               ),
-                              SizedBox(height: 25),
                             ],
                           ),
                         ),
@@ -119,6 +120,7 @@ class _BpjsScreenState extends State<BpjsScreen>
                                     fontWeight: FontWeight.bold),
                               ),
                             ),
+                      SizedBox(height: 10),
                       rujukanResponse == null
                           ? Container()
                           : ListView.builder(
@@ -131,7 +133,7 @@ class _BpjsScreenState extends State<BpjsScreen>
                                         this.context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                DaftarPoliScreen(
+                                                PilihPoliScreen(
                                                   request: request,
                                                   poliBpjs: listRujukan[index]
                                                       .poliRujukan

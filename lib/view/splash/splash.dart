@@ -6,7 +6,6 @@ import 'package:flutter/services.dart';
 import 'package:medis/model/response/base_response.dart';
 import 'package:medis/view/home/bottombar.dart';
 import 'package:mvvm_builder/mvvm_builder.dart';
-import 'package:percent_indicator/percent_indicator.dart';
 import 'package:medis/cache/pref.dart';
 import 'package:medis/utilities/version_checking.dart';
 import 'package:medis/view/splash/pattern/splash_presenter.dart';
@@ -43,7 +42,7 @@ class _SplashState extends State<Splash> implements SplashViewInterface {
       if (Platform.isAndroid) {
         packageName = 'com.rsudaa.pelayanananonline';
       } else if (Platform.isIOS) {
-        packageName = 'com.rsudaa.pelayanananonline';
+        packageName = 'com.rsudaa.pelayananonline';
       }
     } on PlatformException {}
 
@@ -127,18 +126,7 @@ class _SplashState extends State<Splash> implements SplashViewInterface {
                           height: 150,
                         )),
                       ),
-                      SizedBox(height: 50),
-                      LinearPercentIndicator(
-                        alignment: MainAxisAlignment.center,
-                        width: MediaQuery.of(this.context).size.width / 3,
-                        lineHeight: 2.0,
-                        animation: true,
-                        percent: 1.0,
-                        animationDuration: 2250,
-                        backgroundColor: Colors.grey,
-                        progressColor: Colors.white,
-                      ),
-                      SizedBox(height: 100),
+                      SizedBox(height: 150),
                       Text(
                         'version. $versionName',
                         style: TextStyle(

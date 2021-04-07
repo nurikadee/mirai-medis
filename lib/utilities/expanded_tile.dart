@@ -109,7 +109,7 @@ class _ExpandedTileState extends State<ExpandedTile>
             child: InkWell(
               splashColor: widget.headerSplashColor,
               onTap: () {
-                tileController.toggle();
+                if (widget.content != null) tileController.toggle();
                 if (widget.onTapParent != null) return widget.onTapParent();
               },
               child: Container(

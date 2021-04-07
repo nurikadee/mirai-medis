@@ -3,21 +3,21 @@
 <plist version="1.0">
 	<dict>
 		<key>CLIENT_ID</key>
-		<string>735242902235-jnogq3ina1iea2a031oaq3n3ako4i605.apps.googleusercontent.com</string>
+		<string>345834209279-v3mem529tnojuc0qg5qtr8qrg5vjsuu5.apps.googleusercontent.com</string>
 		<key>REVERSED_CLIENT_ID</key>
-		<string>com.googleusercontent.apps.735242902235-jnogq3ina1iea2a031oaq3n3ako4i605</string>
+		<string>com.googleusercontent.apps.345834209279-v3mem529tnojuc0qg5qtr8qrg5vjsuu5</string>
 		<key>API_KEY</key>
-		<string>AIzaSyCYGPIINGx0EFCORdCxe8Ipk7reQrHmBaU</string>
+		<string>AIzaSyA3TosUthY5zMDXfYbHvNqIhpZvOL0OPgQ</string>
 		<key>GCM_SENDER_ID</key>
-		<string>735242902235</string>
+		<string>345834209279</string>
 		<key>PLIST_VERSION</key>
 		<string>1</string>
 		<key>BUNDLE_ID</key>
-		<string>com.rsudaa.simpersaa</string>
+		<string>com.rsudaa.pelayananonline</string>
 		<key>PROJECT_ID</key>
-		<string>mirai-simpersaa</string>
+		<string>mirai-medis</string>
 		<key>STORAGE_BUCKET</key>
-		<string>mirai-simpersaa.appspot.com</string>
+		<string>mirai-medis.appspot.com</string>
 		<key>IS_ADS_ENABLED</key>
 		<false></false>
 		<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 		<key>IS_SIGNIN_ENABLED</key>
 		<true></true>
 		<key>GOOGLE_APP_ID</key>
-		<string>1:735242902235:ios:7978d9afb643b23231cafe</string>
+		<string>1:345834209279:ios:47092af52c435232ce71ca</string>
 	</dict>
 </plist>

@@ -14,10 +14,9 @@ dependencies:
   http: ^0.13.0
   html: ^0.15.0
   cupertino_icons: ^1.0.0
-  percent_indicator: ^2.1.5
   provider: ^4.3.2+4
   toast: ^0.1.5
-  shared_preferences: 0.5.12+4
+  shared_preferences: 0.5.3
   font_awesome_flutter: ^8.11.0
   package_info: ^0.4.3+2
   url_launcher: ^5.4.7
@@ -28,10 +27,11 @@ dependencies:
   intl: ^0.17.0
   lifecycle: ^0.1.1+1
   carousel_slider: ^3.0.0
+  fradio: ^1.0.1
 
   firebase_core:
   firebase_messaging:
-  firebase_crashlytics:
+  flutter_local_notifications: ^3.0.0
 
 dev_dependencies:
   flutter_test:

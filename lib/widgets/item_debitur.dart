@@ -44,10 +44,6 @@ class ItemDebitur extends StatelessWidget {
                                 request);
                           }
                         },
-                        expandIcon: debitur.detail.length == 1
-                            ? Icon(Icons.arrow_forward_ios,
-                                size: 15, color: Colors.white)
-                            : Icon(Icons.arrow_forward_ios, size: 15),
                         controller: _controller,
                         centerHeaderTitle: false,
                         title: Text(
@@ -101,6 +97,7 @@ class ItemDebiturDetail extends StatelessWidget {
                       debiturDetail, request);
                 },
                 child: ListTile(
+                    trailing: Icon(Icons.arrow_forward_ios, size: 10),
                     title: Text(debiturDetail.namaDebiturDetail,
                         textAlign: TextAlign.start,
                         style: TextStyle(

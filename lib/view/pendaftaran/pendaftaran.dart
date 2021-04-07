@@ -36,62 +36,69 @@ class _PendaftaranState extends State<Pendaftaran>
             body: initResponses == null
                 ? Container()
                 : Container(
-                    padding: EdgeInsets.all(15),
+                    padding: EdgeInsets.all(20),
                     child: ListView(
                       children: [
-                        Container(
-                          width: MediaQuery.of(this.context).size.width,
-                          child: Row(
-                            children: [
-                              Text(
-                                "Pilih Tanggal Kunjungan : ",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 14),
-                              ),
-                              SizedBox(width: 10),
-                              Expanded(
-                                child: Container(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal: 10, vertical: 5),
-                                  decoration: BoxDecoration(
-                                      color: Colors.grey[200],
-                                      borderRadius: BorderRadius.circular(10)),
-                                  child: DropdownButton<String>(
-                                      value: selectedDate,
-                                      icon: Icon(Icons.arrow_drop_down),
-                                      isExpanded: true,
-                                      iconSize: 20,
-                                      underline: SizedBox(),
-                                      onChanged: (String newValue) {
-                                        setState(() {
-                                          selectedDate = newValue;
-                                        });
-                                      },
-                                      items: twoDaysFromNow
-                                          .sublist(0, 2)
-                                          .map<DropdownMenuItem<String>>(
-                                              (String value) {
-                                        return DropdownMenuItem<String>(
-                                          value: value,
-                                          child: Container(
-                                              child: Text(
-                                            Utils.getDateFormat(value),
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 14),
-                                          )),
-                                        );
-                                      }).toList()),
+                        Padding(
+                          padding: EdgeInsets.only(left: 10.0, right: 10.0),
+                          child: Container(
+                            child: Row(
+                              children: [
+                                Text(
+                                  "Pilih Tanggal Kunjungan : ",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 14),
                                 ),
-                              ),
-                            ],
+                                SizedBox(width: 10),
+                                Expanded(
+                                  child: Container(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 10, vertical: 5),
+                                    decoration: BoxDecoration(
+                                        color: Colors.grey[200],
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    child: DropdownButton<String>(
+                                        value: selectedDate,
+                                        icon: Icon(Icons.arrow_drop_down),
+                                        isExpanded: true,
+                                        iconSize: 20,
+                                        underline: SizedBox(),
+                                        onChanged: (String newValue) {
+                                          setState(() {
+                                            selectedDate = newValue;
+                                          });
+                                        },
+                                        items: twoDaysFromNow
+                                            .sublist(0, 2)
+                                            .map<DropdownMenuItem<String>>(
+                                                (String value) {
+                                          return DropdownMenuItem<String>(
+                                            value: value,
+                                            child: Container(
+                                                child: Text(
+                                              Utils.getDateFormat(value),
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 14),
+                                            )),
+                                          );
+                                        }).toList()),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                         SizedBox(height: 5),
-                        Text(
-                          "Tanggal pendaftaran tersedia pada H-1 dan H-2 dari tanggal hari ini.",
-                          style:
-                              TextStyle(fontSize: 12, color: Colors.green[700]),
+                        Padding(
+                          padding: EdgeInsets.only(left: 10.0, right: 10.0),
+                          child: Text(
+                            "Tanggal pendaftaran tersedia pada H-1 dan H-2 dari tanggal hari ini.",
+                            style: TextStyle(
+                                fontSize: 12, color: Colors.green[700]),
+                          ),
                         ),
                         SizedBox(height: 15),
                         initResponses == null
