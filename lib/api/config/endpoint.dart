@@ -16,4 +16,9 @@ class EndpointMedis {
       Uri.parse(APiSettings.baseUrlMedis + "bpjs/rujukan/get-rujukan-by-kartu");
   static var bpjstopoli =
       Uri.parse(APiSettings.baseUrlMedis + "poli/get-poli-rs-by-poli-bpjs");
+  static var daftarPoli =
+      Uri.parse(APiSettings.baseUrlMedis + "pendaftaran/daftar-poli");
+  static var poli = Uri.parse(APiSettings.baseUrlMedis + "poli/get-poli");
+  static var poliUtama =
+      Uri.parse(APiSettings.baseUrlMedis + "poli/get-poli-utama");
 }

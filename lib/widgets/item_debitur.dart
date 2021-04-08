@@ -3,20 +3,23 @@ import 'package:medis/model/request/pendaftaran_request.dart';
 import 'package:medis/model/response/debitur_response.dart';
 import 'package:medis/utilities/expanded_tile.dart';
 import 'package:medis/utilities/expanded_tile_controller.dart';
-import 'package:medis/view/pendaftaran/bpjs.dart';
-import 'package:medis/view/pendaftaran/umum.dart';
+import 'package:medis/view/pendaftaran/b_bpjs.dart';
+import 'package:medis/view/pendaftaran/b_umum.dart';
+import 'package:medis/view/pendaftaran/c_poli_umum.dart';
 
 class ItemDebitur extends StatelessWidget {
+  final String noRekamMedis;
   final Debitur debitur;
   final String tanggalKunjungan;
 
-  ItemDebitur({this.debitur, this.tanggalKunjungan});
+  ItemDebitur({this.noRekamMedis, this.debitur, this.tanggalKunjungan});
 
   @override
   Widget build(BuildContext context) {
     ExpandedTileController _controller = ExpandedTileController();
 
     PendaftaranRequest request = PendaftaranRequest();
+    request.noRekamMedis = noRekamMedis;
     request.tanggalKunjungan = tanggalKunjungan;
 
     return debitur.kodeDebitur == null
@@ -37,10 +40,15 @@ class ItemDebitur extends StatelessWidget {
                       ExpandedTile(
                         onTapParent: () {
                           if (debitur.detail.length == 1) {
+                            var debiturDetail = debitur.detail[0];
+
+                            request.debiturId = debiturDetail.kodeDebiturDetail;
+                            request.debiturName =
+                                debiturDetail.namaDebiturDetail;
                             goToDebiturDetail(
                                 context,
-                                debitur.detail[0].kodeDebiturDetail,
-                                debitur.detail[0],
+                                debiturDetail.kodeDebiturDetail,
+                                debiturDetail,
                                 request);
                           }
                         },
@@ -93,6 +101,9 @@ class ItemDebiturDetail extends StatelessWidget {
             child: Container(
               child: InkWell(
                 onTap: () {
+                  request.debiturId = debiturDetail.kodeDebiturDetail;
+                  request.debiturName = debiturDetail.namaDebiturDetail;
+
                   goToDebiturDetail(context, debiturDetail.kodeDebiturDetail,
                       debiturDetail, request);
                 },
@@ -110,20 +121,22 @@ class ItemDebiturDetail extends StatelessWidget {
   }
 }
 
-void goToDebiturDetail(BuildContext context, String nameDebitur,
+void goToDebiturDetail(BuildContext context, String kodeDebitur,
     DebiturDetail debiturDetail, PendaftaranRequest request) {
   StatefulWidget nextScreen;
-
-  switch (nameDebitur) {
+  print(debiturDetail.toJson().toString());
+  switch (kodeDebitur) {
     case "1210":
       nextScreen = BpjsScreen(request: request);
       break;
-    default:
+    case "1012":
       nextScreen =
           UmumScreen(title: debiturDetail.namaDebiturDetail, request: request);
       break;
+    default:
+      nextScreen = PoliScreen(request: request, isVip: false);
+      break;
   }
   if (nextScreen == null) return;
-
   Navigator.push(context, MaterialPageRoute(builder: (context) => nextScreen));
 }

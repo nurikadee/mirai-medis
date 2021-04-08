@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:medis/view/dokter/dokter.dart';
 import 'package:medis/view/dokter/jadwal_praktik.dart';
 import 'package:medis/view/infokamar/info_kamar.dart';
-import 'package:medis/view/pendaftaran/pendaftaran.dart';
+import 'package:medis/view/pendaftaran/a_pendaftaran.dart';
 
 class DashboardMenu {
   StatefulWidget directTo;
