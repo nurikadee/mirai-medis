@@ -43,7 +43,8 @@ class PendaftaranService {
           return InitResponse.fromJson(body);
           break;
         case 400:
-          return BaseResponse(message: APiSettings.errorMsg);
+          final body = jsonDecode(response.body);
+          return BaseResponse.fromJson(body);
           break;
         default:
           return BaseResponse(message: APiSettings.errorMsg);
@@ -68,7 +69,8 @@ class PendaftaranService {
           return DebiturResponse.fromJson(body);
           break;
         case 400:
-          return BaseResponse(message: APiSettings.errorMsg);
+          final body = jsonDecode(response.body);
+          return BaseResponse.fromJson(body);
           break;
         default:
           return BaseResponse(message: APiSettings.errorMsg);
@@ -141,7 +143,8 @@ class PendaftaranService {
           return BpjsToPoliResponse.fromJson(body);
           break;
         case 400:
-          return BaseResponse(message: APiSettings.errorMsg);
+          final body = jsonDecode(response.body);
+          return BaseResponse.fromJson(body);
           break;
         default:
           return BaseResponse(message: APiSettings.errorMsg);

@@ -110,7 +110,7 @@ class ItemDokter extends StatelessWidget {
             padding: EdgeInsets.only(bottom: 3),
             width: MediaQuery.of(context).size.width,
             child: Container(
-              color: Colors.grey[200],
+              color: Colors.grey[100],
               child: InkWell(
                 onTap: () {
                   Navigator.push(

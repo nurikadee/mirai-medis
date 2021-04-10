@@ -20,11 +20,18 @@ class DokterService {
       developer.log("${jsonDecode(response.body)}",
           name: "Response ${EndpointMedis.dokter}");
 
-      if (response.statusCode == 200) {
-        final body = jsonDecode(response.body);
-        return DokterResponse.fromJson(body);
-      } else {
-        return BaseResponse(message: APiSettings.errorMsg);
+      switch (response.statusCode) {
+        case 200:
+          final body = jsonDecode(response.body);
+          return DokterResponse.fromJson(body);
+          break;
+        case 400:
+          final body = jsonDecode(response.body);
+          return BaseResponse.fromJson(body);
+          break;
+        default:
+          return BaseResponse(message: APiSettings.errorMsg);
+          break;
       }
     } on SocketException {
       return BaseResponse(message: APiSettings.errorNetwork);
@@ -39,11 +46,18 @@ class DokterService {
       developer.log("${jsonDecode(response.body)}",
           name: "Response ${EndpointMedis.dokterByPoli}");
 
-      if (response.statusCode == 200) {
-        final body = jsonDecode(response.body);
-        return DokterByPoliResponse.fromJson(body);
-      } else {
-        return BaseResponse(message: APiSettings.errorMsg);
+      switch (response.statusCode) {
+        case 200:
+          final body = jsonDecode(response.body);
+          return DokterByPoliResponse.fromJson(body);
+          break;
+        case 400:
+          final body = jsonDecode(response.body);
+          return BaseResponse.fromJson(body);
+          break;
+        default:
+          return BaseResponse(message: APiSettings.errorMsg);
+          break;
       }
     } on SocketException {
       return BaseResponse(message: APiSettings.errorNetwork);
@@ -62,11 +76,18 @@ class DokterService {
       developer.log("${jsonDecode(response.body)}",
           name: "Response ${EndpointMedis.jadwalDokter}");
 
-      if (response.statusCode == 200) {
-        final body = jsonDecode(response.body);
-        return JadwalDokterResponse.fromJson(body);
-      } else {
-        return BaseResponse(message: APiSettings.errorMsg);
+      switch (response.statusCode) {
+        case 200:
+          final body = jsonDecode(response.body);
+          return JadwalDokterResponse.fromJson(body);
+          break;
+        case 400:
+          final body = jsonDecode(response.body);
+          return BaseResponse.fromJson(body);
+          break;
+        default:
+          return BaseResponse(message: APiSettings.errorMsg);
+          break;
       }
     } on SocketException {
       return BaseResponse(message: APiSettings.errorNetwork);

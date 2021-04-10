@@ -29,9 +29,9 @@ class AuthPresenter extends Presenter<AuthViewModel, AuthViewInterface> {
           viewInterface.showMessage(value.message, true);
         }
       } else if (value is BaseResponse) {
-        viewInterface.showMessage(APiSettings.errorNetwork, true);
-      } else {
         viewInterface.showMessage(value.message, true);
+      } else {
+        viewInterface.showMessage(APiSettings.errorMsg, true);
       }
 
       if (EasyLoading.isShow) {

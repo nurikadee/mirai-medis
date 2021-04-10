@@ -47,9 +47,9 @@ class DokterPresenter extends Presenter<DokterViewModel, DokterViewInterface> {
           this.viewInterface.showListDokter(value);
         }
       } else if (value is BaseResponse) {
-        viewInterface.showMessage(APiSettings.errorNetwork, true);
-      } else {
         viewInterface.showMessage(value.message, true);
+      } else {
+        viewInterface.showMessage(APiSettings.errorMsg, true);
       }
 
       if (EasyLoading.isShow) {
@@ -68,9 +68,9 @@ class DokterPresenter extends Presenter<DokterViewModel, DokterViewInterface> {
           this.viewInterface.showListDokterByPoli(value);
         }
       } else if (value is BaseResponse) {
-        viewInterface.showMessage(APiSettings.errorNetwork, true);
-      } else {
         viewInterface.showMessage(value.message, true);
+      } else {
+        viewInterface.showMessage(APiSettings.errorMsg, true);
       }
 
       if (EasyLoading.isShow) {
@@ -89,9 +89,9 @@ class DokterPresenter extends Presenter<DokterViewModel, DokterViewInterface> {
           this.viewInterface.showListJadwalDokter(value);
         }
       } else if (value is BaseResponse) {
-        viewInterface.showMessage(APiSettings.errorNetwork, true);
-      } else {
         viewInterface.showMessage(value.message, true);
+      } else {
+        viewInterface.showMessage(APiSettings.errorMsg, true);
       }
 
       if (EasyLoading.isShow) {

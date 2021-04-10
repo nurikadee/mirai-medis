@@ -21,4 +21,6 @@ class EndpointMedis {
   static var poli = Uri.parse(APiSettings.baseUrlMedis + "poli/get-poli");
   static var poliUtama =
       Uri.parse(APiSettings.baseUrlMedis + "poli/get-poli-utama");
+  static var listKamar =
+      Uri.parse(APiSettings.baseUrlMedis + "info-kamar/kamar-rawat-inap");
 }

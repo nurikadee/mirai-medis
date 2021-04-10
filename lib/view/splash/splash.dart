@@ -11,6 +11,7 @@ import 'package:medis/utilities/version_checking.dart';
 import 'package:medis/view/splash/pattern/splash_presenter.dart';
 import 'package:medis/view/splash/pattern/splash_view_interface.dart';
 import 'package:medis/view/splash/pattern/splash_view_model.dart';
+import 'package:toast/toast.dart';
 
 String versionName = '2.0.0';
 
@@ -145,6 +146,17 @@ class _SplashState extends State<Splash> implements SplashViewInterface {
         );
       },
       presenter: SplashPresenter(SplashViewModel(), this),
+    );
+  }
+
+  @override
+  void showMessage(String message, bool error) {
+    Toast.show(
+      message,
+      context,
+      backgroundColor: error ? Colors.red : Colors.green[400],
+      duration: Toast.LENGTH_LONG,
+      gravity: Toast.BOTTOM,
     );
   }
 

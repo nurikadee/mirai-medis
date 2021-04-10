@@ -61,9 +61,9 @@ class PendaftaranPresenter
           this.viewInterface.showDays(value);
         }
       } else if (value is BaseResponse) {
-        viewInterface.showMessage(APiSettings.errorNetwork, true);
-      } else {
         viewInterface.showMessage(value.message, true);
+      } else {
+        viewInterface.showMessage(APiSettings.errorMsg, true);
       }
 
       if (EasyLoading.isShow) {
@@ -82,9 +82,9 @@ class PendaftaranPresenter
           this.viewInterface.showRujukan(value);
         }
       } else if (value is BaseResponse) {
-        viewInterface.showMessage(APiSettings.errorNetwork, true);
+        viewInterface.showMessage(value.message, true);
       } else {
-        viewInterface.showMessage("", true);
+        viewInterface.showMessage(APiSettings.errorMsg, true);
       }
 
       if (EasyLoading.isShow) {
@@ -103,9 +103,9 @@ class PendaftaranPresenter
           this.viewInterface.showBpjsToPoli(value);
         }
       } else if (value is BaseResponse) {
-        viewInterface.showMessage(APiSettings.errorNetwork, true);
+        viewInterface.showMessage(value.message, true);
       } else {
-        viewInterface.showMessage("", true);
+        viewInterface.showMessage(APiSettings.errorMsg, true);
       }
 
       if (EasyLoading.isShow) {
@@ -124,9 +124,9 @@ class PendaftaranPresenter
           this.viewInterface.showPoli(value);
         }
       } else if (value is BaseResponse) {
-        viewInterface.showMessage(APiSettings.errorNetwork, true);
+        viewInterface.showMessage(value.message, true);
       } else {
-        viewInterface.showMessage("", true);
+        viewInterface.showMessage(APiSettings.errorMsg, true);
       }
 
       if (EasyLoading.isShow) {
@@ -147,7 +147,7 @@ class PendaftaranPresenter
       } else if (value is BaseResponse) {
         viewInterface.showMessage(value.message, true);
       } else {
-        viewInterface.showMessage("", true);
+        viewInterface.showMessage(APiSettings.errorMsg, true);
       }
 
       if (EasyLoading.isShow) {

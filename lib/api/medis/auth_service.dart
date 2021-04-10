@@ -54,11 +54,18 @@ class AuthService {
       developer.log("${jsonDecode(response.body)}",
           name: "Response ${EndpointMedis.login}");
 
-      if (response.statusCode == 200) {
-        final body = jsonDecode(response.body);
-        return LoginResponse.fromJson(body);
-      } else {
-        return BaseResponse(message: APiSettings.errorMsg);
+      switch (response.statusCode) {
+        case 200:
+          final body = jsonDecode(response.body);
+          return LoginResponse.fromJson(body);
+          break;
+        case 400:
+          final body = jsonDecode(response.body);
+          return BaseResponse.fromJson(body);
+          break;
+        default:
+          return BaseResponse(message: APiSettings.errorMsg);
+          break;
       }
     } on SocketException {
       return BaseResponse(message: APiSettings.errorNetwork);

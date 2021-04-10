@@ -1,3 +1,4 @@
+import 'package:medis/api/config/apisettings.dart';
 import 'package:medis/api/medis/auth_service.dart';
 import 'package:medis/cache/pref.dart';
 import 'package:medis/model/request/save_token_request.dart';
@@ -32,8 +33,12 @@ class SplashPresenter extends Presenter<SplashViewModel, SplashViewInterface> {
           deviceId: deviceId, noRekamMedis: noRekamMedis, token: token);
 
       await AuthService.saveToken(request).then((value) {
-        viewModel.baseResponse = value;
-        viewInterface.goToHome(value);
+        if (value is BaseResponse) {
+          viewModel.baseResponse = value;
+          viewInterface.goToHome(value);
+        } else {
+          viewInterface.showMessage(APiSettings.errorMsg, true);
+        }
       });
     } catch (e) {
       viewInterface.goToHome(BaseResponse());
