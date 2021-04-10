@@ -130,10 +130,11 @@ class ItemRuangan extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ))),
                   subtitle: Transform(
-                      transform: Matrix4.translationValues(-16, 0.0, 0.0),
+                      transform: Matrix4.translationValues(-20, 0.0, 0.0),
                       child: Container(
                         margin: EdgeInsets.only(top: 5),
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Expanded(
                               child: Card(
@@ -149,7 +150,7 @@ class ItemRuangan extends StatelessWidget {
                                       style: TextStyle(
                                         fontSize: 12,
                                         color: Colors.white,
-                                        fontWeight: FontWeight.bold,
+                                        fontWeight: FontWeight.normal,
                                       )),
                                 ),
                               ),
@@ -168,7 +169,7 @@ class ItemRuangan extends StatelessWidget {
                                       style: TextStyle(
                                         fontSize: 12,
                                         color: Colors.white,
-                                        fontWeight: FontWeight.bold,
+                                        fontWeight: FontWeight.normal,
                                       )),
                                 ),
                               ),
@@ -187,7 +188,7 @@ class ItemRuangan extends StatelessWidget {
                                       style: TextStyle(
                                         fontSize: 12,
                                         color: Colors.white,
-                                        fontWeight: FontWeight.bold,
+                                        fontWeight: FontWeight.normal,
                                       )),
                                 ),
                               ),
