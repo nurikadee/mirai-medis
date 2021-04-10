@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lifecycle/lifecycle.dart';
 import 'package:medis/cache/pref.dart';
 import 'package:medis/model/response/login_response.dart';
+import 'package:medis/view/activity/activity.dart';
 import 'package:medis/view/akun/login.dart';
 import 'package:medis/view/splash/splash.dart';
 
@@ -60,36 +61,44 @@ class _ProfileState extends State<Profile> with LifecycleAware, LifecycleMixin {
               isLoggedIn ? Container() : getButtonLogin(),
               Container(
                   width: MediaQuery.of(context).size.width,
-                  child: Card(
-                    child: Container(
-                      padding: EdgeInsets.all(5),
-                      height: MediaQuery.of(context).size.width / 5,
-                      child: Center(
-                        child: ListTile(
-                            leading: Container(
-                              child: Icon(
-                                Icons.history,
-                                size: 30,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ActivityScreen()));
+                    },
+                    child: Card(
+                      child: Container(
+                        padding: EdgeInsets.all(5),
+                        height: MediaQuery.of(context).size.width / 5,
+                        child: Center(
+                          child: ListTile(
+                              leading: Container(
+                                child: Icon(
+                                  Icons.history,
+                                  size: 30,
+                                  color: Colors.grey[500],
+                                ),
+                              ),
+                              trailing: Icon(
+                                Icons.arrow_forward_ios_rounded,
+                                size: 20,
                                 color: Colors.grey[500],
                               ),
-                            ),
-                            trailing: Icon(
-                              Icons.arrow_forward_ios_rounded,
-                              size: 20,
-                              color: Colors.grey[500],
-                            ),
-                            title: Text("Riwayat aktifitas",
-                                style: TextStyle(
-                                  color: Colors.grey[500],
-                                  fontWeight: FontWeight.bold,
-                                )),
-                            subtitle:
-                                Text("Melihat aktifitas anda pada aplikasi",
-                                    style: TextStyle(
-                                      color: Colors.grey[500],
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.normal,
-                                    ))),
+                              title: Text("Riwayat Aktifitas Pasien",
+                                  style: TextStyle(
+                                    color: Colors.grey[500],
+                                    fontWeight: FontWeight.bold,
+                                  )),
+                              subtitle:
+                                  Text("Melihat aktifitas anda pada aplikasi",
+                                      style: TextStyle(
+                                        color: Colors.grey[500],
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.normal,
+                                      ))),
+                        ),
                       ),
                     ),
                   )),
