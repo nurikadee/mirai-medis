@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:medis/api/config/apisettings.dart';
 import 'package:medis/api/config/endpoint.dart';
 import 'package:medis/cache/pref.dart';
+import 'package:medis/model/request/batal_daftar_request.dart';
 import 'package:medis/model/request/rekam_medis_request.dart';
 import 'package:medis/model/response/activity_response.dart';
 import 'package:medis/model/response/base_response.dart';
@@ -34,6 +35,37 @@ class ActivityService {
           final body = jsonDecode(response.body);
           return ActivityResponse.fromJson(body);
           break;
+        case 400:
+          final body = jsonDecode(response.body);
+          return BaseResponse.fromJson(body);
+          break;
+        default:
+          return BaseResponse(message: APiSettings.errorMsg);
+          break;
+      }
+    } on SocketException {
+      return BaseResponse(message: APiSettings.errorNetwork);
+    }
+  }
+
+  static Future<dynamic> cancelPendaftaran(BatalDaftarRequest request) async {
+    var header;
+    await Pref.getUserLogin().then((value) {
+      header = APiSettings.getHeader("Bearer ${value.user.authKey}");
+    });
+
+    try {
+      final response = await http.post(EndpointMedis.batalDaftar,
+          headers: header, body: request.toJson());
+
+      developer.log("${request.toJson()}",
+          name: "Request ${EndpointMedis.batalDaftar}");
+
+      developer.log("${jsonDecode(response.body)}",
+          name: "Response ${EndpointMedis.batalDaftar}");
+
+      switch (response.statusCode) {
+        case 200:
         case 400:
           final body = jsonDecode(response.body);
           return BaseResponse.fromJson(body);

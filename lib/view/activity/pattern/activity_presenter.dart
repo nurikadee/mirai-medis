@@ -1,6 +1,7 @@
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:medis/api/config/apisettings.dart';
-import 'package:medis/api/medis/Activity_service.dart';
+import 'package:medis/api/medis/activity_service.dart';
+import 'package:medis/model/request/batal_daftar_request.dart';
 import 'package:medis/model/response/activity_response.dart';
 import 'package:medis/model/response/base_response.dart';
 import 'package:medis/view/activity/pattern/activity_view_interface.dart';
@@ -38,6 +39,23 @@ class ActivityPresenter
         }
       } else if (value is BaseResponse) {
         viewInterface.showMessage(value.message, true);
+      } else {
+        viewInterface.showMessage(APiSettings.errorMsg, true);
+      }
+
+      if (EasyLoading.isShow) {
+        EasyLoading.dismiss();
+      }
+    });
+  }
+
+  Future<void> cancelPendaftaran(BatalDaftarRequest request) async {
+    EasyLoading.show(status: 'Loading...');
+
+    await ActivityService.cancelPendaftaran(request).then((value) {
+      if (value is BaseResponse) {
+        viewInterface.showMessage(
+            value.message, value.status == 200 ? false : true);
       } else {
         viewInterface.showMessage(APiSettings.errorMsg, true);
       }

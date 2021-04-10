@@ -24,4 +24,6 @@ class EndpointMedis {
   static var listKamar =
       Uri.parse(APiSettings.baseUrlMedis + "info-kamar/kamar-rawat-inap");
   static var activity = Uri.parse(APiSettings.baseUrlMedis + "riwayat/pasien");
+  static var batalDaftar =
+      Uri.parse(APiSettings.baseUrlMedis + "pendaftaran/cancel-poli");
 }
